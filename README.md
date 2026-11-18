@@ -6,6 +6,8 @@ Sito personale di Riccardo Cerruto (TFA sostegno, Università di Catania) per an
 
 Apri il quaderno su [https://frestik904.github.io/tirocinio-tfa/](https://frestik904.github.io/tirocinio-tfa/) oppure, in locale, apri `index.html`. Su iPhone, da Safari, puoi usare «Aggiungi a Home».
 
+La pubblicazione è il workflow `.github/workflows/pages.yml`, che parte a ogni push su `main`. Se il link non si apre ancora, in GitHub vai su **Settings → Pages → Build and deployment** e scegli **GitHub Actions**.
+
 ## Uso
 
 - **Attività**: inserisci data, dalle/alle, ore (calcolate dagli orari, modificabili), tipo diretto o indiretto, scuola e classe se servono, attività svolte e note. Puoi modificare ed eliminare (con conferma).
