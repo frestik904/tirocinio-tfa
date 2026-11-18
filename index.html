@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f4e5f">
+  <meta name="description" content="Quaderno personale del tirocinio TFA sostegno di Riccardo Cerruto, Università di Catania.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Tirocinio">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Quaderno di tirocinio — Riccardo Cerruto</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenuto">Vai al contenuto</a>
+
+  <header class="app-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <p class="eyebrow">Università di Catania · TFA sostegno</p>
+        <h1>Quaderno di tirocinio</h1>
+        <p class="sub" id="header-corsista">Riccardo Cerruto</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="btn-nuova" aria-label="Nuova attività">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Nuova</span>
+        </button>
+        <button type="button" class="icon-btn" id="btn-impostazioni" data-view="impostazioni" aria-label="Impostazioni">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M5.8 5.8l1.6 1.6M16.6 16.6l1.6 1.6M18.2 5.8l-1.6 1.6M7.4 16.6l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Opzioni</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Sezioni">
+    <div class="tabs-inner">
+      <button type="button" class="tab is-active" data-view="riepilogo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V10M10 19V5M16 19v-7M22 19H2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Riepilogo</span>
+      </button>
+      <button type="button" class="tab" data-view="calendario">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Calendario</span>
+      </button>
+      <button type="button" class="tab" data-view="elenco">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 7h12M8 12h12M8 17h12M4 7h.01M4 12h.01M4 17h.01" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Elenco</span>
+      </button>
+      <button type="button" class="tab tab-desktop" data-view="attivita">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Attività</span>
+      </button>
+      <button type="button" class="tab" data-view="stampa">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><rect x="6" y="14" width="12" height="7" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span>Stampa</span>
+      </button>
+      <button type="button" class="tab tab-desktop" data-view="impostazioni">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M5.8 5.8l1.6 1.6M16.6 16.6l1.6 1.6M18.2 5.8l-1.6 1.6M7.4 16.6l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <span>Impostazioni</span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="banner" class="banner" hidden role="status"></div>
+
+  <main id="contenuto" class="wrap">
+    <section id="view-riepilogo" class="view is-active" aria-labelledby="titolo-riepilogo">
+      <div class="section-head">
+        <h2 id="titolo-riepilogo">Riepilogo ore</h2>
+        <button type="button" class="btn btn-primary" data-action="nuova">Nuova attività</button>
+      </div>
+      <div id="dash-root"></div>
+    </section>
+
+    <section id="view-calendario" class="view" aria-labelledby="cal-label">
+      <div class="cal-toolbar">
+        <div class="cal-nav">
+          <button type="button" class="icon-btn" id="cal-prev" aria-label="Mese precedente">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <h2 id="cal-label">Calendario</h2>
+          <button type="button" class="icon-btn" id="cal-next" aria-label="Mese successivo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <button type="button" class="btn" id="cal-today">Oggi</button>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span><i class="dot diretto"></i> Diretto</span>
+        <span><i class="dot indiretto"></i> Indiretto</span>
+        <span><i class="dot both"></i> Entrambi</span>
+      </div>
+      <div class="cal-weekdays" aria-hidden="true">
+        <span>Lun</span><span>Mar</span><span>Mer</span><span>Gio</span><span>Ven</span><span>Sab</span><span>Dom</span>
+      </div>
+      <div id="cal-grid" class="cal-grid" role="grid" aria-label="Giorni del mese"></div>
+      <div id="day-panel" class="day-panel"></div>
+    </section>
+
+    <section id="view-elenco" class="view" aria-labelledby="titolo-elenco">
+      <div class="section-head">
+        <h2 id="titolo-elenco">Elenco attività</h2>
+        <button type="button" class="btn btn-primary" data-action="nuova">Nuova attività</button>
+      </div>
+      <div class="filters">
+        <label>Mese
+          <select id="filtro-mese">
+            <option value="">Tutti i mesi</option>
+          </select>
+        </label>
+        <label>Tipo
+          <select id="filtro-tipo">
+            <option value="">Tutti</option>
+            <option value="diretto">Diretto</option>
+            <option value="indiretto">Indiretto</option>
+          </select>
+        </label>
+        <label class="filter-search">Cerca
+          <input id="filtro-ricerca" type="search" placeholder="Attività, scuola, classe, note" autocomplete="off">
+        </label>
+      </div>
+      <p id="elenco-count" class="muted"></p>
+      <div class="table-scroll">
+        <table class="elenco">
+          <caption class="sr-only">Attività di tirocinio filtrate</caption>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Orario</th>
+              <th>Ore</th>
+              <th>Tipo</th>
+              <th>Scuola / classe</th>
+              <th>Attività svolte</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody id="elenco-body"></tbody>
+        </table>
+      </div>
+      <p id="elenco-vuoto" class="empty" hidden>Nessuna attività corrisponde ai filtri.</p>
+    </section>
+
+    <section id="view-attivita" class="view" aria-labelledby="attivita-titolo">
+      <div class="card">
+        <h2 id="attivita-titolo">Nuova attività</h2>
+        <p class="muted">I campi con <span class="req" aria-hidden="true">*</span> sono obbligatori. Le ore si calcolano dagli orari e puoi correggerle.</p>
+        <form id="form-attivita" novalidate>
+          <div class="form-grid times">
+            <div>
+              <label for="data">Data <span class="req">*</span></label>
+              <input id="data" name="data" type="date" required autocomplete="off">
+              <p id="err-data" class="field-error" hidden></p>
+            </div>
+            <div>
+              <label for="dalle">Dalle <span class="req">*</span></label>
+              <input id="dalle" name="dalle" type="time" required step="60" autocomplete="off">
+              <p id="err-dalle" class="field-error" hidden></p>
+            </div>
+            <div>
+              <label for="alle">Alle <span class="req">*</span></label>
+              <input id="alle" name="alle" type="time" required step="60" autocomplete="off">
+              <p id="err-alle" class="field-error" hidden></p>
+            </div>
+            <div>
+              <label for="ore">Ore <span class="req">*</span></label>
+              <input id="ore" name="ore" type="text" inputmode="decimal" required autocomplete="off" placeholder="0">
+              <p id="ore-hint" class="hint"></p>
+              <p id="err-ore" class="field-error" hidden></p>
+            </div>
+          </div>
+
+          <fieldset class="tipo-field">
+            <legend>Tipo di attività <span class="req">*</span></legend>
+            <div class="segmented" role="radiogroup" aria-label="Tipo di attività">
+              <label><input type="radio" name="tipo" value="diretto" checked> Diretto</label>
+              <label><input type="radio" name="tipo" value="indiretto"> Indiretto</label>
+            </div>
+            <p id="err-tipo" class="field-error" hidden></p>
+          </fieldset>
+
+          <div class="form-grid two">
+            <div>
+              <label for="scuola">Scuola <span class="optional">facoltativa</span></label>
+              <input id="scuola" name="scuola" type="text" maxlength="160" list="scuole-list" autocomplete="organization" placeholder="Nome della scuola">
+              <datalist id="scuole-list"></datalist>
+            </div>
+            <div>
+              <label for="classe">Classe <span class="optional">facoltativa</span></label>
+              <input id="classe" name="classe" type="text" maxlength="40" list="classi-list" autocomplete="off" placeholder="es. 2A">
+              <datalist id="classi-list"></datalist>
+            </div>
+          </div>
+
+          <div>
+            <label for="attivita-svolte">Attività svolte <span class="req">*</span></label>
+            <textarea id="attivita-svolte" name="attivita" required maxlength="4000" rows="5" placeholder="Descrivi ciò che hai fatto in queste ore"></textarea>
+            <p id="err-attivita" class="field-error" hidden></p>
+          </div>
+          <div>
+            <label for="note">Note <span class="optional">facoltative</span></label>
+            <textarea id="note" name="note" maxlength="2000" rows="3" placeholder="Osservazioni, accordi, materiali"></textarea>
+          </div>
+
+          <p id="form-errore" class="field-error" hidden></p>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="btn-salva">Salva attività</button>
+            <button type="button" class="btn" id="btn-annulla-modifica" hidden>Annulla</button>
+            <button type="button" class="btn btn-danger" id="btn-elimina-modifica" hidden>Elimina</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="view-stampa" class="view" aria-labelledby="titolo-stampa">
+      <div class="no-print">
+        <div class="section-head">
+          <h2 id="titolo-stampa">Registro da stampare</h2>
+          <button type="button" class="btn btn-primary" id="btn-stampa">Stampa registro</button>
+        </div>
+        <p class="muted">L'intestazione si salva su questo dispositivo. Nel dialogo di stampa scegli «Salva come PDF» e, se serve, l'orientamento orizzontale. Su iPhone: nel foglio di stampa allarga l'anteprima con due dita, poi «Salva su File».</p>
+        <fieldset class="tipo-field">
+          <legend>Cosa stampare</legend>
+          <div class="segmented" role="radiogroup" aria-label="Registro da stampare">
+            <label><input type="radio" name="stampa-tipo" value="diretto"> Diretto</label>
+            <label><input type="radio" name="stampa-tipo" value="indiretto"> Indiretto</label>
+            <label><input type="radio" name="stampa-tipo" value="entrambi" checked> Entrambi</label>
+          </div>
+        </fieldset>
+      </div>
+
+      <article id="registro" class="registro">
+        <header class="registro-head">
+          <p class="uni">Università degli Studi di Catania</p>
+          <p class="corso">Corso di specializzazione per le attività di sostegno didattico agli alunni con disabilità</p>
+          <h2>Quaderno di tirocinio</h2>
+          <div class="meta">
+            <label>Corsista
+              <input id="print-nome" data-setting="nomeCorsista" type="text" maxlength="120" autocomplete="name">
+            </label>
+            <label>Anno accademico
+              <input id="print-anno" data-setting="annoAccademico" type="text" maxlength="20" autocomplete="off" placeholder="2026/2027">
+            </label>
+            <label>Scuola
+              <input id="print-scuola" data-setting="scuola" type="text" maxlength="160" autocomplete="organization">
+            </label>
+            <label>Tutor scolastico
+              <input id="print-tutor-s" data-setting="tutorScolastico" type="text" maxlength="120" autocomplete="name">
+            </label>
+            <label class="meta-wide">Tutor coordinatore
+              <input id="print-tutor-c" data-setting="tutorCoordinatore" type="text" maxlength="120" autocomplete="name">
+            </label>
+          </div>
+        </header>
+
+        <div class="paper-scroll">
+          <table>
+            <caption class="sr-only">Registro delle attività di tirocinio</caption>
+            <colgroup>
+              <col class="c-data">
+              <col class="c-ora">
+              <col class="c-ora">
+              <col class="c-ore">
+              <col class="c-tipo">
+              <col class="c-att">
+              <col class="c-firma">
+              <col class="c-firma">
+            </colgroup>
+            <thead>
+              <tr class="running">
+                <th id="print-running" colspan="8">Quaderno di tirocinio</th>
+              </tr>
+              <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Dalle</th>
+                <th scope="col">Alle</th>
+                <th scope="col">Ore</th>
+                <th scope="col">Tipo attività</th>
+                <th scope="col">Attività svolte</th>
+                <th scope="col">Firma studente</th>
+                <th scope="col">Firma tutor</th>
+              </tr>
+            </thead>
+            <tbody id="print-body"></tbody>
+          </table>
+        </div>
+        <p id="print-totali" class="print-totali"></p>
+        <p class="print-note">Prospetto generato dal quaderno personale. Le firme si appongono a mano. Il timbro è quello della scuola.</p>
+        <footer class="firme">
+          <div>
+            <p>Firma del tutor scolastico</p>
+            <div class="linea"></div>
+          </div>
+          <div>
+            <p>Firma del tutor coordinatore</p>
+            <div class="linea"></div>
+          </div>
+          <div>
+            <p>Il Dirigente scolastico</p>
+            <div class="linea"></div>
+            <p class="timbro">Timbro</p>
+          </div>
+        </footer>
+      </article>
+    </section>
+
+    <section id="view-impostazioni" class="view" aria-labelledby="titolo-impostazioni">
+      <div class="card">
+        <h2 id="titolo-impostazioni">Impostazioni</h2>
+        <p class="muted">Nome, scuola e tutor si modificano nell'intestazione del <button type="button" class="link" data-view="stampa">registro da stampare</button>. Qui regoli obiettivi e limiti.</p>
+        <form id="form-impostazioni" novalidate>
+          <div class="form-grid two">
+            <div>
+              <label for="set-obb-diretto">Obiettivo ore diretto</label>
+              <input id="set-obb-diretto" type="number" min="1" max="1000" step="0.5" inputmode="decimal" required>
+            </div>
+            <div>
+              <label for="set-obb-indiretto">Obiettivo ore indiretto</label>
+              <input id="set-obb-indiretto" type="number" min="1" max="1000" step="0.5" inputmode="decimal" required>
+            </div>
+            <div>
+              <label for="set-lim-mese">Limite ore dirette al mese</label>
+              <input id="set-lim-mese" type="number" min="1" max="1000" step="0.5" inputmode="decimal" required>
+            </div>
+            <div>
+              <label for="set-lim-sett">Limite ore totali a settimana</label>
+              <input id="set-lim-sett" type="number" min="1" max="1000" step="0.5" inputmode="decimal" required>
+            </div>
+          </div>
+          <p class="hint">Il limite mensile conta solo il tirocinio diretto. Il limite settimanale conta diretto e indiretto, da lunedì a domenica. Superare un limite non blocca il salvataggio: compare un avviso.</p>
+          <p id="settings-errore" class="field-error" hidden></p>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Salva obiettivi e limiti</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Backup</h2>
+        <p class="muted">I dati restano solo in questo browser. Per spostarli tra PC e iPhone esporta il JSON e importalo sull'altro dispositivo. Non caricare il backup nel repository: il sito è pubblico, il quaderno no.</p>
+        <div class="form-actions">
+          <button type="button" class="btn btn-primary" id="btn-export">Esporta JSON</button>
+          <button type="button" class="btn" id="btn-share" hidden>Condividi</button>
+          <label class="btn file-btn">Importa JSON
+            <input id="import-file" type="file" accept="application/json,.json">
+          </label>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <p class="colophon no-print wrap">Dati solo su questo dispositivo · nessun invio a un server.</p>
+
+  <div id="dialog" class="dialog-backdrop" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+      <h2 id="dialog-title"></h2>
+      <div id="dialog-body"></div>
+      <div id="dialog-actions" class="dialog-actions"></div>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <noscript>
+    <p class="banner">Per usare il quaderno di tirocinio serve JavaScript. I dati restano sul dispositivo.</p>
+  </noscript>
+  <script src="js/logic.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

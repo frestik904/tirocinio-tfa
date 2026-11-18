@@ -1,0 +1,19 @@
+{
+  "name": "Quaderno di tirocinio TFA",
+  "short_name": "Tirocinio",
+  "description": "Registro personale del tirocinio TFA sostegno di Riccardo Cerruto.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "lang": "it",
+  "background_color": "#f4f1ea",
+  "theme_color": "#1f4e5f",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
